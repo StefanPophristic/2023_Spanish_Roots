@@ -8,7 +8,7 @@ Running on Monday July 22nd, 2024
 
 Experiment details:
 - 5 conditions
-- 42 total paradigms 
+- 42 total paradigms
 
 
 Script has following features:
