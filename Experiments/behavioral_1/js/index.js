@@ -376,15 +376,19 @@ function make_slides(f) {
       //   $("#fixation_cross").hide();
       // }, fixationCrossTime);
 
+
+
       this.trial_ISI = ISI();
 
       // after set amount of time, show the stim
       setTimeout(() => {
         $("#target_word").show();
+        // Tracker to see if a keypress has been processed (to prevent multiple button presses stacking up)
+        this.processingKey = false;
       }, this.trial_ISI);
 
       // Tracker to see if a keypress has been processed (to prevent multiple button presses stacking up)
-      this.processingKey = false;
+      this.processingKey = true;
 
       // Once keypress event happens, give the key press to the checkKey function
       document.onkeypress = (e) => {
@@ -402,7 +406,7 @@ function make_slides(f) {
       */
       function checkKey(e) {
         e = e || window.event;
-        if (e.keyCode == 102 || e.keyCode == 106) {
+        if ((e.keyCode == 102 || e.keyCode == 106) && !this.processingKey) {
 
           // // update percent correct for participant feedback
           // exp.feedback_numtrials += 1;
